@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -6,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const new({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -14,7 +13,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int height = 170;
-  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +25,7 @@ class _MyAppState extends State<MyApp> {
           shadowColor: Colors.orange,
           title: Text(
             'BMI Calculator',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w900,
-            ),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight(1000)),
           ),
         ),
 
@@ -47,17 +42,14 @@ class _MyAppState extends State<MyApp> {
                         color: Colors.teal,
                         width: double.infinity,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.male,
-                              size: 25,
-                              color: Colors.white,
-                            ),
+                            Icon(Icons.male, size: 35, color: Colors.white),
                             Text(
                               'Male',
                               style: TextStyle(
                                 fontSize: 25,
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight(1000),
                               ),
                             ),
                           ],
@@ -73,17 +65,14 @@ class _MyAppState extends State<MyApp> {
                         color: Colors.teal,
                         width: double.infinity,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.female,
-                              size: 25,
-                              color: Colors.white,
-                            ),
+                            Icon(Icons.female, size: 35, color: Colors.white),
                             Text(
                               'Female',
                               style: TextStyle(
                                 fontSize: 25,
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight(1000),
                               ),
                             ),
                           ],
@@ -95,67 +84,173 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
 
-            // Height Container
-            Container(
-              color: Colors.teal,
-              width: double.infinity,
+            Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Height: $height cm',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w900,
+                child: Container(
+                  color: Colors.teal,
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Height',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight(1000),
+                        ),
                       ),
-                    ),
 
-                    Slider(
-                      value: height.toDouble(),
-                      min: 100,
-                      max: 250,
-                      onChanged: (double newValue) {
-                        setState(() {
-                          height = newValue.toInt();
-                        });
-                      },
-                    ),
-                  ],
+                      Text(
+                        '$height cm',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight(1000),
+                        ),
+                      ),
+                      Slider(
+                        value: height.toDouble(),
+                        min: 100,
+                        max: 250,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.toInt();
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
 
-            // Weight Container
-            Container(
-              color: Colors.teal,
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Weight: $weight kg',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w900,
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        color: Colors.teal,
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Weight',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight(1000),
+                              ),
+                            ),
+                  
+                            Text(
+                              '60 kg',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight(1000),
+                              ),
+                            ),
+                  
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: FloatingActionButton.small(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.orange,
+                                    heroTag: 'btn1',
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 25,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: FloatingActionButton.small(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.orange,
+                                    heroTag: 'btn2',
+                                    child: Icon(
+                                      Icons.remove,
+                                      size: 25,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-
-                    Slider(
-                      value: weight.toDouble(),
-                      min: 30,
-                      max: 150,
-                      onChanged: (double newValue) {
-                        setState(() {
-                          weight = newValue.toInt();
-                        });
-                      },
+                  ),
+                  
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        color: Colors.teal,
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Age',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight(1000),
+                              ),
+                            ),
+                  
+                            Text(
+                              '30',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight(1000),
+                              ),
+                            ),
+                  
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: FloatingActionButton.small(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.orange,
+                                    heroTag: 'btn3',
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 25,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: FloatingActionButton.small(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.orange,
+                                    heroTag: 'btn4',
+                                    child: Icon(
+                                      Icons.remove,
+                                      size: 25,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
